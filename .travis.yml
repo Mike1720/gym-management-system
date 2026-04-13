@@ -1,0 +1,22 @@
+language: java
+
+jdk:
+  - openjdk17
+
+before_install:
+  - cd backend
+
+install:
+  - mvn dependency:resolve -q
+
+script:
+  - mvn test -Dspring.profiles.active=test
+
+cache:
+  directories:
+    - ~/.m2
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
